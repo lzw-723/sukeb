@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>sukeb</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/unpoly@3.9.0/unpoly.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/unpoly@3.9.0/unpoly.min.js"></script>
+
+    <script>
+        up.compiler('.timestamp', (element) => {
+            var now = new Date()
+            element.innerText = now
+        })
+
+
+
+        window.onload = async () => {
+
+            let request = up.request('/api/v1/artworks', {params: {query: 'sunshine'}});
+            let response = await request;
+            let artworks = response.json;
+            console.log('The artworks are', artworks);
+
+            up.compiler('.art-list', (element) => {
+                artworks.forEach(artwork => {
+                    element.innerHTML += `
+                        <li class="artwork" data-title="${artwork.title}" data-magnet="${artwork.link}"></li>
+                    `
+                });
+            });
+            
+            up.compiler('.artwork', (element, data) => {
+                element.innerHTML = `
+                <a href="${data.magnet}">${data.title}</a>
+            `
+            })
+        };
+    </script>
+</head>
+<body>
+
+
+<main>
+    <ul class="art-list"></ul>
+    <p>
+        The time is <span class="timestamp"></span>
+    </p>
+
+    <a href="about.html" up-layer="new">
+        关于
+    </a>
+
+</main>
+
+</body>
+</html>

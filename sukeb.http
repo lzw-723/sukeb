@@ -1,0 +1,11 @@
+@sukeb_HostAddress = http://localhost:5266
+
+GET {{sukeb_HostAddress}}/artworks/
+Accept: application/json
+
+###
+
+GET {{sukeb_HostAddress}}/artworks/1
+Accept: application/json
+
+###
