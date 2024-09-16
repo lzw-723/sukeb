@@ -1,0 +1,67 @@
+{
+  "name": "unpoly",
+  "version": "3.9.0",
+  "description": "Progressive enhancement for HTML",
+  "main": "unpoly.js",
+  "style": "unpoly.css",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md",
+    "unpoly*.js",
+    "unpoly*.css"
+  ],
+  "scripts": {
+    "test": "node spec/app.js",
+    "build": "webpack --config ./webpack/production.js && gzip --keep --force dist/unpoly.es6.min.js dist/unpoly.min.js",
+    "dev": "npx nf start --procfile Procfile.dev",
+    "watch-dev": "webpack --watch --config ./webpack/development.js",
+    "build-dev": "webpack --config ./webpack/development.js",
+    "lint": "npx eslint src",
+    "release": "bundle exec rake release:process"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unpoly/unpoly.git"
+  },
+  "keywords": [
+    "progressive enhancement",
+    "unobtrusive javascript",
+    "html over the wire",
+    "ujs",
+    "server-side",
+    "ssr"
+  ],
+  "author": "Henning Koch <henning@triskweline.de> (https://makandra.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unpoly/unpoly/issues"
+  },
+  "homepage": "https://unpoly.com",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "*",
+    "coffee-loader": "*",
+    "coffeescript": "*",
+    "css-loader": "*",
+    "eslint": "*",
+    "eslint-webpack-plugin": "*",
+    "express": "*",
+    "foreman": "*",
+    "jasmine": "*",
+    "jasmine-ajax": "*",
+    "jquery": "*",
+    "mini-css-extract-plugin": "*",
+    "nf": "*",
+    "null-loader": "*",
+    "opn": "*",
+    "rails-erb-loader": "*",
+    "sass": "*",
+    "sass-loader": "*",
+    "terser-webpack-plugin": "*",
+    "ts-loader": "*",
+    "typescript": "*",
+    "webpack": "*",
+    "webpack-cli": "*",
+    "webpack-dev-server": "*"
+  }
+}
