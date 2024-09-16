@@ -30,9 +30,9 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish -c Release
+      run: dotnet publish -c Release -o sukeb
     - name: Package Zip
-      run: zip -r sukeb.zip bin/Release/net8.0/publish
+      run: zip -r sukeb.zip sukeb/*
     - name: Release
       uses: softprops/action-gh-release@v2
       if: startsWith(github.ref, 'refs/tags/')
