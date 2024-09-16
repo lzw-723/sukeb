@@ -1,10 +1,9 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0
+
 USER $APP_UID
-WORKDIR /app
 ENV PORT=5000
 EXPOSE $PORT
 
-FROM base
+COPY sukeb /app
 WORKDIR /app
-COPY sukeb/* /app
 ENTRYPOINT ["dotnet", "sukeb.dll"]
