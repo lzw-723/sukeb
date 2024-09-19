@@ -12,9 +12,12 @@
     <ItemGroup>
       <PackageReference Include="AngleSharp" Version="1.1.2" />
     </ItemGroup>
-
+    
     <ItemGroup>
-      <Folder Include="wwwroot\lib\" />
+      <None Include="wwwroot\assets\index-CmccM62-.js" />
+      <None Include="wwwroot\assets\index-Dk5pTxdC.css" />
+      <None Include="wwwroot\index.html" />
+      <None Include="wwwroot\vite.svg" />
     </ItemGroup>
 
 </Project>
