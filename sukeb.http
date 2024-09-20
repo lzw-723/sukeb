@@ -1,4 +1,4 @@
-@sukeb_HostAddress = http://localhost:5266
+@sukeb_HostAddress = http://localhost:5000/api/v1
 
 GET {{sukeb_HostAddress}}/artworks/
 Accept: application/json

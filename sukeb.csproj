@@ -19,5 +19,14 @@
       <None Include="wwwroot\index.html" />
       <None Include="wwwroot\vite.svg" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="sukeb\web.config" />
+      <_ContentIncludedByDefault Remove="sukeb\appsettings.Development.json" />
+      <_ContentIncludedByDefault Remove="sukeb\appsettings.json" />
+      <_ContentIncludedByDefault Remove="sukeb\sukeb.deps.json" />
+      <_ContentIncludedByDefault Remove="sukeb\sukeb.runtimeconfig.json" />
+      <_ContentIncludedByDefault Remove="sukeb\wwwroot\lib\unpoly@3.9.0\package.json" />
+    </ItemGroup>
 
 </Project>
