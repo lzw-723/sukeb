@@ -47,7 +47,6 @@ async Task FetchNyaa(List<Artwork> artworks)
         MatchCollection items = Regex.Matches(title, @"\[([^\[\]]*)\]");
         if (items.Count > 1)
         {
-            Console.WriteLine($"{title}");
             // 获取第一个匹配项
             // title = items[0].Value;
             // title = title.Substring(1, title.Length - 2);
@@ -59,7 +58,7 @@ async Task FetchNyaa(List<Artwork> artworks)
             artist = items[0].Value;
             artist = artist.Substring(1, artist.Length - 2);
         }
-    
+
         var link = titleElement!.GetAttribute("href")!.Trim();
 
         var view = await WebParse.GetDoc("https://skb-nyaa.hacgn.eu.org" + link);
@@ -79,8 +78,10 @@ async Task FetchNyaa(List<Artwork> artworks)
         var magnet = magnetElement!.GetAttribute("href")!.Trim();
 
         artworks.Add(new Artwork(title, artist, magnet, imageUrl));
-        Console.WriteLine($"{title} {magnet}");
+        app.Logger.LogInformation("Found artwork: {title}", title);
     }
+
+    app.Logger.LogInformation("Nyaa created");
 }
 
 [JsonSerializable(typeof(List<Artwork>))]
