@@ -2,5 +2,5 @@
 
 namespace sukeb;
 
-public record Artwork(String? Title, String? Artist, String? Link, String? ImageLink = null, String? Description = null);
+public record Artwork(string? Title, string? Artist, string? WorkId, string? Link, string? ImageLink = null, string? Description = null);
 

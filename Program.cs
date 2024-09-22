@@ -43,20 +43,22 @@ async Task FetchNyaa(List<Artwork> artworks)
         if (titleElement == null) continue;
         var title = titleElement!.TextContent.Trim();
         var artist = "";
+        var workId = "";
         // 使用正则表达式查找所有[]内的内容
         MatchCollection items = Regex.Matches(title, @"\[([^\[\]]*)\]");
-        if (items.Count > 1)
+        foreach (Match item in items)
         {
-            // 获取第一个匹配项
-            // title = items[0].Value;
-            // title = title.Substring(1, title.Length - 2);
-            artist = items[1].Value;
-            artist = artist.Substring(1, artist.Length - 2);
-        }
-        else if (items.Count == 1)
-        {
-            artist = items[0].Value;
-            artist = artist.Substring(1, artist.Length - 2);
+            var t = item.Value;
+            t = t.Substring(1, t.Length - 2);
+            
+            if (t.Contains("Alice"))
+            {
+                artist = t;
+            }
+            else if (t.StartsWith("fantia"))
+            {
+                workId = t;
+            }
         }
 
         var link = titleElement!.GetAttribute("href")!.Trim();
@@ -77,7 +79,7 @@ async Task FetchNyaa(List<Artwork> artworks)
         var magnetElement = tr.QuerySelector("tr td:nth-child(3) a:nth-child(2)");
         var magnet = magnetElement!.GetAttribute("href")!.Trim();
 
-        artworks.Add(new Artwork(title, artist, magnet, imageUrl));
+        artworks.Add(new Artwork(title, artist, workId,magnet, imageUrl));
         app.Logger.LogInformation("Found artwork: {title}", title);
     }
 
