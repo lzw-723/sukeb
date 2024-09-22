@@ -6,6 +6,7 @@ function App() {
 
     const [artworks, setArtworks] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    const [showTop, setShowTop] = useState(false);
 
     const listItems = artworks.map((artwork, index) => <div key={index} className="cell block">
         <ArtworkCard artwork={artwork}/>
@@ -21,10 +22,18 @@ function App() {
     }
 
     useEffect(() => {
+        window.onscroll = () => {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                setShowTop(true);
+            } else {
+                setShowTop(false);
+            }
+        };
         fetchArtworks();
     }, [])
+
     return (<>
-        <section className="hero">
+        <section id="top" className="hero">
             <div className="hero-body">
                 <p className="title">sukeb</p>
                 <p className="subtitle">cos收集站</p>
@@ -52,6 +61,19 @@ function App() {
             {/*    </div>*/}
         </div>
 
+
+        {/*返回顶部按钮*/}
+        <a style={{
+            position: "fixed",
+            bottom: "20px",
+            right: "20px",
+            zIndex: 999,
+            opacity: 0.8,
+            display: showTop? "block" : "none",
+            transition: "opacity 0.3s ease-in-out"
+        }} className="button" onClick={() => window.scrollTo({top: 0, behavior: "smooth"})}>
+            <span>↑</span>
+        </a>
         <footer className="footer">
             <div className="content has-text-centered">
                 <p>
