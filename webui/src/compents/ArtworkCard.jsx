@@ -20,7 +20,7 @@ function ArtworkCard({ artwork }) {
                 <div className="media">
                     <div className="media-content">
                         <p className="title is-4">{artwork.artist}</p>
-                        {/*<p className="subtitle is-6">@johnsmith</p>*/}
+                        <p className="subtitle is-6">{artwork.workId || ""}</p>
                     </div>
                 </div>
 
