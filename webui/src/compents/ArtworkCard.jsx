@@ -27,7 +27,7 @@ function ArtworkCard({ artwork }) {
                 <div className="content">
                     <a href={artwork.link}>{artwork.title}</a>
                     <br/>
-                    {/*<time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>*/}
+                    <time dateTime={artwork.timestamp}>{ (new Date(artwork.timestamp*1000)).toLocaleDateString()}</time>
                 </div>
             </div>
         </div>
