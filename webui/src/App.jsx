@@ -6,6 +6,7 @@ function App() {
 
     const [artworks, setArtworks] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [showTop, setShowTop] = useState(false);
 
     const listItems = artworks.map((artwork, index) => <div key={index} className="cell block">
@@ -13,12 +14,13 @@ function App() {
     </div>);
 
     function fetchArtworks() {
+        setLoading(true);
         return fetch('/api/v1/artworks')
             .then(response => response.json())
             .then(data => {
                 setArtworks(data);
                 console.log(data)
-            });
+            }).finally(() => setLoading(false));
     }
 
     useEffect(() => {
@@ -41,7 +43,7 @@ function App() {
         </section>
         <div className="container p-1">
             <button onClick={() => fetchArtworks()} className="button">刷新</button>
-            <div className="fixed-grid has-1-cols-mobile has-2-cols-tablet has-4-cols-desktop">
+            <div className={"fixed-grid has-1-cols-mobile has-2-cols-tablet has-4-cols-desktop" + (loading ? " skeleton-block" : "")}>
                 <div className="grid">
                     {listItems}
                 </div>
@@ -69,7 +71,7 @@ function App() {
             right: "20px",
             zIndex: 999,
             opacity: 0.8,
-            display: showTop? "block" : "none",
+            display: showTop ? "block" : "none",
             transition: "opacity 0.3s ease-in-out"
         }} className="button" onClick={() => window.scrollTo({top: 0, behavior: "smooth"})}>
             <span>↑</span>
