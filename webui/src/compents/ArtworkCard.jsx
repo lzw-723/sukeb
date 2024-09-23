@@ -1,8 +1,9 @@
-import React from'react';
+import React from 'react';
 import 'bulma/css/bulma.css';
+import {Calendar} from 'lucide-react';
 import placeholder from '../assets/placeholder.png';
 
-function ArtworkCard({ artwork }) {
+function ArtworkCard({artwork}) {
     return (<>
         <div className="card">
             <div className="card-image">
@@ -27,7 +28,13 @@ function ArtworkCard({ artwork }) {
                 <div className="content">
                     <a href={artwork.link}>{artwork.title}</a>
                     <br/>
-                    <time dateTime={artwork.timestamp}>{ (new Date(artwork.timestamp*1000)).toLocaleDateString()}</time>
+                    <span className="icon-text">
+                  <span className="icon">
+                    <Calendar/>
+                  </span>
+                  <span><time dateTime={artwork.timestamp}>
+                                        {(new Date(artwork.timestamp * 1000)).toLocaleDateString()}</time></span>
+                </span>
                 </div>
             </div>
         </div>

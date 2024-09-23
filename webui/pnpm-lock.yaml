@@ -8,6 +8,12 @@ dependencies:
   bulma:
     specifier: ^1.0.2
     version: 1.0.2
+  lucide:
+    specifier: ^0.445.0
+    version: 0.445.0
+  lucide-react:
+    specifier: ^0.445.0
+    version: 0.445.0(react@18.3.1)
   react:
     specifier: ^18.3.1
     version: 18.3.1
@@ -1859,6 +1865,18 @@ packages:
     dependencies:
       yallist: 3.1.1
     dev: true
+
+  /lucide-react@0.445.0(react@18.3.1):
+    resolution: {integrity: sha512-YrLf3aAHvmd4dZ8ot+mMdNFrFpJD7YRwQ2pUcBhgqbmxtrMP4xDzIorcj+8y+6kpuXBF4JB0NOCTUWIYetJjgA==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
+    dependencies:
+      react: 18.3.1
+    dev: false
+
+  /lucide@0.445.0:
+    resolution: {integrity: sha512-Xkaf7xwXnx2DQj6dHAAnEsL8LI0iSeqh1ObVr6CTw9eYLpRchfXHzB+VL6qypqAy18jZmCY1bu4U652dCTHC3Q==}
+    dev: false
 
   /minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
