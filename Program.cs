@@ -50,7 +50,7 @@ async Task FetchNyaa(List<Artwork> artworks)
         {
             var t = item.Value;
             t = t.Substring(1, t.Length - 2);
-            
+
             if (t.Contains("Alice"))
             {
                 artist = t;
@@ -79,10 +79,13 @@ async Task FetchNyaa(List<Artwork> artworks)
         var magnetElement = tr.QuerySelector("tr td:nth-child(3) a:nth-child(2)");
         var magnet = magnetElement!.GetAttribute("href")!.Trim();
 
+        var sizeElement = tr.QuerySelector("tr td:nth-child(4)");
+        var fileSize = sizeElement!.TextContent.Trim();
+
         var dateElement = tr.QuerySelector("tr td:nth-child(5)");
         uint? timestamp = Convert.ToUInt32(dateElement!.GetAttribute("data-timestamp"));
 
-        artworks.Add(new Artwork(title, artist, workId,magnet, imageUrl, timestamp));
+        artworks.Add(new Artwork(title, artist, workId, fileSize, magnet, imageUrl, timestamp));
         app.Logger.LogInformation("Found artwork: {title}", title);
     }
 
